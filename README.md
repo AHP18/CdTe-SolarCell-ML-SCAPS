@@ -1,2 +1,144 @@
-# CdTe-SolarCell-ML-SCAPS
-ML code and dataset for CdTe solar cell optimization (SCAPS-1D)
+# Machine Learning-Assisted Optimization of CdTe Solar Cells
+
+Code and dataset accompanying the paper **"Fabrication and machine learning-predicted configuration for efficient CdTe solar cell"**.
+
+> Ahnaf Tahmid Abir, Jaker Hossain, Md. Alamin Hossain Pappu, and Mamunur Rashid Talukder
+> Photonics & Advanced Materials Laboratory and Plasma Engineering Laboratory, Department of Electrical and Electronic Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh.
+
+---
+
+## Overview
+
+This repository contains the SCAPS-1D-generated dataset and the machine learning notebooks used to predict the photovoltaic performance (**Voc, Jsc, FF, PCE**) of CdTe solar cells from the material and layer parameters of the window layer, absorber, and back surface field (BSF) layer. The trained models are used to compare candidate structures and identify the best-performing configuration.
+
+**Key result:** ZnS as the window layer and Sb₂Se₃ as the BSF layer gave the best configuration, which was then confirmed by SCAPS-1D (J-V, QE, band diagram).
+
+## Methodology
+
+![ML-Assisted CdTe Solar Cell Optimization Protocol](images/Methodology.png)
+
+1. **Data generation:** 1800 samples simulated in SCAPS-1D (inputs: bandgap, electron affinity, mobility, doping, defect density, thickness, etc.; outputs: Jsc, Voc, FF, PCE).
+2. **Preprocessing:** data cleaning and feature labeling.
+3. **Dataset split (by structure):** 7 structures for training (~78%) and 2 structures for testing (~22%).
+4. **Model selection and hyperparameter tuning:** grid search with 5-fold cross-validation.
+5. **Training, testing, and performance evaluation.**
+6. **Best material selection:** ZnS (window), Sb₂Se₃ (BSF).
+7. **Physical validation:** SCAPS-1D confirmation (J-V, QE, band diagram).
+
+## Repository Structure
+
+```
+.
+├── data/
+│   └── All_Structures_Combined.csv        # Dataset (rename extension if .xlsx)
+├── notebooks/
+│   ├── Hyper_parameters_New_Dataset.ipynb # Hyperparameter tuning of the models
+│   └── solarcell_ML_Models_final.ipynb    # Model training/comparison, feature importance, best-structure search
+├── images/
+│   └── Methodology.png
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+## Dataset: `All_Structures_Combined`
+
+Each row is one SCAPS-1D simulation of a Window / Absorber / BSF structure.
+
+### Column naming
+
+| Prefix | Layer |
+|--------|-------|
+| `W_` | Window layer |
+| `A_` | Absorber layer (CdTe) |
+| `B_` | BSF (back surface field) layer |
+
+| Suffix | Parameter | Unit (SCAPS-1D) |
+|--------|-----------|------|
+| `Thickness` | Layer thickness | µm |
+| `Eg` | Bandgap | eV |
+| `Ea` | Electron affinity (χ) | eV |
+| `Dp` | Dielectric permittivity (relative) | – |
+| `Nc` | Effective density of states, conduction band | cm⁻³ |
+| `Nv` | Effective density of states, valence band | cm⁻³ |
+| `Ue` | Electron mobility | cm²/V·s |
+| `Uh` | Hole mobility | cm²/V·s |
+| `Na` | Doping density | cm⁻³ |
+| `dd` | Defect density (Nt) | cm⁻³ |
+
+> **Note:** `W_Na` is the doping density of the window layer, which is n-type, so it is physically a **donor density (Nd)**. The column keeps the name `W_Na` for consistency with the other layers.
+
+### Columns
+
+- **Identifiers:** `Structure`, `Window` (window material), `BSF` (BSF material)
+- **Window layer inputs:** `W_Thickness`, `W_Eg`, `W_Ea`, `W_Dp`, `W_Nc`, `W_Nv`, `W_Ue`, `W_Uh`, `W_Na`, `W_dd`
+- **Absorber inputs:** `A_Thickness`, `A_Eg`, `A_Ea`, `A_Dp`, `A_Nc`, `A_Nv`, `A_Ue`, `A_Uh`, `A_Na`, `A_dd`
+- **BSF inputs:** `B_Thickness`, `B_Eg`, `B_Ea`, `B_Dp`, `B_Nc`, `B_Nv`, `B_Ue`, `B_Uh`, `B_Na`, `B_dd`
+- **Targets (outputs):** `Voc` (V), `Jsc` (mA/cm²), `FF` (%), `PCE` (%)
+
+## Notebooks
+
+| Notebook | Description |
+|----------|-------------|
+| `Hyper_parameters_New_Dataset.ipynb` | Hyperparameter tuning of the ML models (grid search with 5-fold cross-validation). |
+| `solarcell_ML_Models_final.ipynb` | Training and comparison of the models, feature importance extraction, and identification of the best structure. |
+
+Run `Hyper_parameters_New_Dataset.ipynb` first, then `solarcell_ML_Models_final.ipynb`.
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch Jupyter
+
+```bash
+jupyter notebook
+```
+
+Open the notebooks inside `notebooks/`. If a notebook loads the data with a path such as `All_Structures_Combined.csv`, update it to `../data/All_Structures_Combined.csv`.
+
+You can also open the notebooks in Google Colab by uploading them with the dataset.
+
+## Results
+
+| Model | Target | R² | RMSE |
+|-------|--------|----|------|
+| _fill in_ | Voc | | |
+| _fill in_ | Jsc | | |
+| _fill in_ | FF | | |
+| _fill in_ | PCE | | |
+
+_Add the feature-importance figure and the final best-structure result from the paper here._
+
+## Citation
+
+If you use this code or dataset, please cite:
+
+```bibtex
+@article{abir2026cdte,
+  title   = {Fabrication and machine learning-predicted configuration for efficient CdTe solar cell},
+  author  = {Abir, Ahnaf Tahmid and Hossain, Jaker and Pappu, Md. Alamin Hossain and Talukder, Mamunur Rashid},
+  journal = {<journal name>},
+  year    = {<year>},
+  doi     = {<doi>}
+}
+```
+
+## License
+
+This project is released under the MIT License (see `LICENSE`). _Change this if your journal or institution requires otherwise._
+
+## Contact
+
+For questions, please open an issue or contact the corresponding authors, Jaker Hossain and Mamunur Rashid Talukder, Department of EEE, University of Rajshahi.
