@@ -1,7 +1,5 @@
 # Machine Learning-Assisted Optimization of CdTe Solar Cells
 
----
-
 ## Overview
 
 <h1 align="center">Fabrication and machine learning-predicted configuration for efficient CdTe solar cell</h1>
