@@ -9,7 +9,22 @@ Code and dataset accompanying the paper **"Fabrication and machine learning-pred
 
 ## Overview
 
-This repository contains the SCAPS-1D-generated dataset and the machine learning notebooks used to predict the photovoltaic performance (**Voc, Jsc, FF, PCE**) of CdTe solar cells from the material and layer parameters of the window layer, absorber, and back surface field (BSF) layer. The trained models are used to compare candidate structures and identify the best-performing configuration.
+<h1 align="center">Fabrication and machine learning-predicted configuration for efficient CdTe solar cell</h1>
+
+<p align="center">
+Ahnaf Tahmid Abir<sup>1</sup>, Jaker Hossain<sup>1*</sup>, Md. Alamin Hossain Pappu<sup>1</sup>, and Mamunur Rashid Talukder<sup>2*</sup>
+</p>
+
+<p align="center">
+<i><sup>1</sup>Photonics &amp; Advanced Materials Laboratory, Department of Electrical and Electronic Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh.</i><br>
+<i><sup>2</sup>Plasma Engineering Laboratory, Department of Electrical and Electronic Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh.</i>
+</p>
+
+<p align="center">*Corresponding authors</p>
+
+<p align="center"><b>Code and dataset for ML-assisted optimization of CdTe solar cells (SCAPS-1D)</b></p>
+
+---
 
 **Key result:** ZnS as the window layer and Sb₂Se₃ as the BSF layer gave the best configuration, which was then confirmed by SCAPS-1D (J-V, QE, band diagram).
 
