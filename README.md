@@ -112,14 +112,34 @@ You can also open the notebooks in Google Colab by uploading them with the datas
 
 ## Results
 
-| Model | Target | R² | RMSE |
-|-------|--------|----|------|
-| _fill in_ | Voc | | |
-| _fill in_ | Jsc | | |
-| _fill in_ | FF | | |
-| _fill in_ | PCE | | |
+Six regression models were compared: Random Forest (RF), Gradient Boosting (GB), Linear Regression (LR), Decision Tree (DT), XGBoost (XGB), and Multi-Layer Perceptron (MLP). Models were trained on 7 structures and tested on 2 unseen structures.
 
-_Add the feature-importance figure and the final best-structure result from the paper here._
+**Best model per target:** Gradient Boosting (GB) for **Voc** and **FF**, XGBoost (XGB) for **Jsc** and **PCE**.
+
+**Table: Evaluation of ML model performance on the test structures** (best value per column in bold)
+
+| Model | Metric | Voc | Jsc | FF | PCE |
+|-------|--------|-----|-----|----|-----|
+| **RF** | MAE | 0.0264 | 0.2677 | 1.6149 | 0.7341 |
+| | RMSE | 0.0445 | 1.1816 | 3.7587 | 1.4726 |
+| | R² | 0.965 | 0.9574 | 0.9594 | 0.9373 |
+| **GB** | MAE | **0.0098** | 0.1776 | **0.2687** | 0.2914 |
+| | RMSE | **0.0141** | 0.2916 | **1.5551** | 0.4859 |
+| | R² | **0.9965** | 0.9974 | **0.993** | 0.9932 |
+| **LR** | MAE | 0.0841 | 2.0067 | 6.0822 | 2.5146 |
+| | RMSE | 0.2395 | 5.7377 | 18.8078 | 5.8881 |
+| | R² | -0.012833 | -0.005554 | -0.017064 | -0.001722 |
+| **DT** | MAE | 0.0385 | 0.6389 | 1.7122 | 1.2108 |
+| | RMSE | 0.0771 | 3.7395 | 6.6045 | 3.6016 |
+| | R² | 0.8949 | 0.5729 | 0.8746 | 0.6252 |
+| **XGB** | MAE | 0.0132 | **0.079** | 0.4811 | **0.2054** |
+| | RMSE | 0.0168 | **0.2383** | 1.9007 | **0.4362** |
+| | R² | 0.995 | **0.9983** | 0.9896 | **0.9945** |
+| **MLP** | MAE | 0.0874 | 2.3945 | 7.0001 | 2.5579 |
+| | RMSE | 0.1911 | 4.7183 | 14.9474 | 4.6815 |
+| | R² | _fill in_ | _fill in_ | _fill in_ | _fill in_ |
+
+_Add the feature-importance figure and the final best-structure result (ZnS window / Sb₂Se₃ BSF) from the paper here._
 
 ## Citation
 
