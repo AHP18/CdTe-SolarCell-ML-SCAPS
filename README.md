@@ -1,10 +1,5 @@
 # Machine Learning-Assisted Optimization of CdTe Solar Cells
 
-Code and dataset accompanying the paper **"Fabrication and machine learning-predicted configuration for efficient CdTe solar cell"**.
-
-> Ahnaf Tahmid Abir, Jaker Hossain, Md. Alamin Hossain Pappu, and Mamunur Rashid Talukder
-> Photonics & Advanced Materials Laboratory and Plasma Engineering Laboratory, Department of Electrical and Electronic Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh.
-
 ---
 
 ## Overview
