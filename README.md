@@ -137,9 +137,8 @@ Six regression models were compared: Random Forest (RF), Gradient Boosting (GB),
 | | R² | 0.995 | **0.9983** | 0.9896 | **0.9945** |
 | **MLP** | MAE | 0.0874 | 2.3945 | 7.0001 | 2.5579 |
 | | RMSE | 0.1911 | 4.7183 | 14.9474 | 4.6815 |
-| | R² | _fill in_ | _fill in_ | _fill in_ | _fill in_ |
+| | R² | 0.3556 | 0.32 | 0.3576 | 0.3668 |
 
-_Add the feature-importance figure and the final best-structure result (ZnS window / Sb₂Se₃ BSF) from the paper here._
 
 ## Citation
 
