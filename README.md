@@ -1,7 +1,3 @@
-# Machine Learning-Assisted Optimization of CdTe Solar Cells
-
-## Overview
-
 <h1 align="center">Fabrication and machine learning-predicted configuration for efficient CdTe solar cell</h1>
 
 <p align="center">
@@ -19,6 +15,10 @@ Ahnaf Tahmid Abir<sup>1</sup>, Jaker Hossain<sup>1*</sup>, Md. Alamin Hossain Pa
 
 ---
 
+## Overview
+
+This repository contains the SCAPS-1D-generated dataset and the machine learning notebooks used to predict the photovoltaic performance (**Voc, Jsc, FF, PCE**) of CdTe solar cells from the material and layer parameters of the window layer, absorber, and back surface field (BSF) layer. The trained models are then used to compare candidate window/BSF materials and identify the best-performing configuration.
+
 **Key result:** ZnS as the window layer and Sb₂Se₃ as the BSF layer gave the best configuration, which was then confirmed by SCAPS-1D (J-V, QE, band diagram).
 
 ## Methodology
@@ -30,7 +30,7 @@ Ahnaf Tahmid Abir<sup>1</sup>, Jaker Hossain<sup>1*</sup>, Md. Alamin Hossain Pa
 3. **Dataset split (by structure):** 7 structures for training (~78%) and 2 structures for testing (~22%).
 4. **Model selection and hyperparameter tuning:** grid search with 5-fold cross-validation.
 5. **Training, testing, and performance evaluation.**
-6. **Best material selection:** ZnS (window), Sb₂Se₃ (BSF).
+6. **Best material selection:** optimization over window and BSF materials using the trained models, giving ZnS (window) and Sb₂Se₃ (BSF).
 7. **Physical validation:** SCAPS-1D confirmation (J-V, QE, band diagram).
 
 ## Repository Structure
@@ -41,7 +41,8 @@ Ahnaf Tahmid Abir<sup>1</sup>, Jaker Hossain<sup>1*</sup>, Md. Alamin Hossain Pa
 │   └── All_Structures_Combined.csv        # Dataset (rename extension if .xlsx)
 ├── notebooks/
 │   ├── Hyper_parameters_New_Dataset.ipynb # Hyperparameter tuning of the models
-│   └── solarcell_ML_Models_final.ipynb    # Model training/comparison, feature importance, best-structure search
+│   ├── solarcell_ML_Models_final.ipynb    # Model training/comparison, feature importance, best-structure search
+│   └── optimization.ipynb                 # Optimization/selection of the window and BSF materials
 ├── images/
 │   └── Methodology.png
 ├── requirements.txt
@@ -88,18 +89,19 @@ Each row is one SCAPS-1D simulation of a Window / Absorber / BSF structure.
 
 | Notebook | Description |
 |----------|-------------|
-| `Hyper_parameters_New_Dataset.ipynb` | Hyperparameter tuning of the ML models (grid search with 5-fold cross-validation). |
-| `solarcell_ML_Models_final.ipynb` | Training and comparison of the models, feature importance extraction, and identification of the best structure. |
+| [`Hyper_parameters_New_Dataset.ipynb`](notebooks/Hyper_parameters_New_Dataset.ipynb) | Hyperparameter tuning of the ML models (grid search with 5-fold cross-validation). |
+| [`solarcell_ML_Models_final.ipynb`](notebooks/solarcell_ML_Models_final.ipynb) | Training and comparison of the models, feature importance extraction, and identification of the best structure. |
+| [`optimization.ipynb`](notebooks/optimization.ipynb) | Optimization technique for selecting the window and BSF materials. |
 
-Run `Hyper_parameters_New_Dataset.ipynb` first, then `solarcell_ML_Models_final.ipynb`.
+Suggested order: `Hyper_parameters_New_Dataset.ipynb`, then `solarcell_ML_Models_final.ipynb`, then `optimization.ipynb`.
 
 ## Getting Started
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/AHP18/CdTe-SolarCell-ML-SCAPS.git
+cd CdTe-SolarCell-ML-SCAPS
 ```
 
 ### 2. Install dependencies
@@ -147,7 +149,6 @@ Six regression models were compared: Random Forest (RF), Gradient Boosting (GB),
 | | RMSE | 0.1911 | 4.7183 | 14.9474 | 4.6815 |
 | | R² | 0.3556 | 0.32 | 0.3576 | 0.3668 |
 
-
 ## Citation
 
 If you use this code or dataset, please cite:
@@ -164,7 +165,7 @@ If you use this code or dataset, please cite:
 
 ## License
 
-This project is released under the MIT License (see `LICENSE`). _Change this if your journal or institution requires otherwise._
+This project is released under the MIT License (see `LICENSE`).
 
 ## Contact
 
